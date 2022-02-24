@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Divisor</title>
+<link rel="stylesheet" type="text/css" href="VgerCore/VgerCore.css" />
+</head>
+<body>
+
+<h1>Divisor</h1>
+
+<p>
+	Divisor shows you how much each item in a stack costs at the auction house.&nbsp; 
+	For example, if there were 5 crystallized fire available for a 12g 50s buyout, 
+	Divisor would inform you that each crystallized fire would cost you 2g 50s, and 
+	that 10 of them would cost you 25g.</p>
+<h2>
+	Installing Divisor</h2>
+<p>
+	Divisor is installed like pretty much every other World of Warcraft mod on the 
+	planet.&nbsp; Extract the contents of the zip file to your Add-ons folder, 
+	generally located here:</p>
+<p class="codeblock">
+	<code>C:\Program Files\World of Warcraft\Interface\Addons</code></p>
+<h2>Trying out Divisor</h2>
+<p>To try out Divisor, visit an auction house, and search for something that&#39;s 
+typically sold in stacks.&nbsp; For example, try searching for &quot;healing potion&quot;.&nbsp; 
+Then, hover over the price of any stack of healing potions (more than one).&nbsp; 
+Divisor will tell you the per-unit cost in a tooltip on the right.&nbsp; There&#39;s 
+nothing you need to do to turn on Divisor or configure it; when it&#39;s installed, 
+it&#39;s working.</p>
+<p>The numbers you see may occasionally be a little different from what you&#39;re 
+expecting.&nbsp; The most likely cause for this is that Divisor automatically 
+factors the minimum bid increment into the calculations.&nbsp; Take this 
+example: Let&#39;s say there are 2 Arcane Tomes for sale, at a price of 28g 1s, or 
+29g buyout.&nbsp; You may initially expect Divisor to tell you that the 
+bid for 1 would be 14g 50c, since that&#39;s half of 28g 1s.&nbsp; However, someone 
+has already bid the minimum on these, so you&#39;d have to increase the bid to at 
+least 29g 41s, 5% more than the current price.&nbsp; That&#39;s more than the 
+buyout.&nbsp; So, Divisor doesn&#39;t even display a minimum bid amount, and just 
+displays &quot;Buyout 15g 50s&quot;.&nbsp; Since you probably installed Divisor to help 
+you get better deals on odd-sized stacks of items, it&#39;s showing you the exact 
+per-unit amount it would cost you to either bid the least amount possible, or 
+buy the item outright.</p>
+<p>Certain items are mostly useful in stacks.&nbsp; This includes the various 
+primal motes (Mote of Fire), enchanting lesser essences (Lesser Astral Essence), 
+and rep items (Sanguine Hibiscus).&nbsp; For some of these items, in addition to 
+the single item price, Divisor will tell you the cost to buy a stack of them.&nbsp; 
+The stack size depends on the item—enchanting essences &quot;stack&quot; to 3 (even though 
+a stack technically holds more than 3), motes &quot;stack&quot; to 10, since that&#39;s how 
+many it takes to make a primal, and so forth.</p>
+<h2>Slash commands</h2>
+<p>Divisor supports a few slash commands that you can type into chat to 
+customize Divisor.</p>
+<h3>Adding a new item to be stacked</h3>
+<p>Divisor automatically gives you individual prices for all items in the 
+auction house, and stacked prices for certain items.&nbsp; For example, if 
+someone were selling 3 Mote of Fire, Divisor would show you the price for 1 Mote 
+of Fire, as well as 10 Mote of Fire.&nbsp; If you want to add your own items for 
+Divisor to show stack prices, you can use the /divisor stack command.</p>
+<p class="codeblock">
+	<code>/divisor stack <i>number [item]<br />
+	</i>/divisor stack 20 [Netherweave Cloth]<br />
+	/divisor stack 20 Silk Cloth</code></p>
+<ul>
+	<li>The stack size must be at least 2.&nbsp; (Divisor always shows you 
+	prices for individual items.)</li>
+	<li>The item can either be simply the name of an item, or an item link that 
+	you&#39;ve shift-clicked.&nbsp; In the above example, you could get Divisor to 
+	show you prices of Netherweave in stacks of 20 if you typed &quot;/divisor stack 
+	20&quot; and then shift-clicked on a stack of Netherweave.</li>
+	<li>If you already have a stack size set for that item, using the command 
+	again will change the stack size to the new one.</li>
+</ul>
+<h3>Removing stacking for an item</h3>
+<p>You can undo the effects of the /divisor stack command by using the /divisor 
+unstack command.</p>
+<p class="codeblock">
+	<code>/divisor unstack <i>[item]<br />
+	</i>/divisor unstack [Netherweave Cloth]<br />
+	/divisor unstack Silk Cloth</code></p>
+<ul>
+	<li>Rules for what&#39;s allowed for the item name are exactly as in the 
+	/divisor stack command.</li>
+	<li>You can also use this to remove stacking for items that came 
+	pre-stacked.&nbsp; For example, you could use this command on Mote of Fire, 
+	which Divisor stacks to 10 by default.</li>
+</ul>
+<h3>Resetting all Divisor options</h3>
+<p>If you&#39;ve really screwed up and want to go back to the default Divisor 
+options, you can use /divisor reset.</p>
+<p class="codeblock">
+	<code>/divisor reset</code></p>
+<ul>
+	<li>This deletes all of your custom stack sizes.&nbsp; You&#39;ll need to 
+	reenter them all again if you reset your Divisor options.</li>
+</ul>
+<h3>Listing all of your stack sizes</h3>
+<p>You can see all of the stack sizes you have set (as well as all of the ones 
+that came with Divisor) using the /divisor list stacks command.</p>
+<p class="codeblock">
+	<code>/divisor list stacks</code></p>
+<h2>Notes</h2>
+<h3>Contacting the author</h3>
+<p>I welcome your feedback.&nbsp; The best way to contact me is through the
+Divisor page on
+<a href="https://wow.curse.com/downloads/wow-addons/details/divisor.aspx" target="_blank">
+Curse</a>, or on <a href="https://facebook.com/vgermods">Facebook</a>.&nbsp; 
+Also, check out my
+<a target="_blank" href="https://www.vgermods.com/">official site</a>, with links 
+to my other mods.</p>
+<h3>Reporting bugs</h3>
+<p>When reporting bugs, it&#39;s helpful to be as specific as possible.&nbsp; By 
+default, WoW hides mod error information from you.&nbsp; Enabling &quot;Show Lua 
+Errors&quot; in 
+Interface Options would 
+be helpful; the error text includes useful information about where the error 
+occurred.&nbsp; Installing a mod like <a href="http://auctioneeraddon.com/dl/" target="_blank">Swatter</a>
+can provide even more useful error information that can help Vger track down the bug.</p>
+<h2>Known problems</h2>
+<ul>
+	<li>Divisor does not work properly with Auctioneer when Compact UI is 
+	enabled (the default).&nbsp; It&#39;s not really 
+	useful if you have Auctioneer anyway.</li>
+	<li><i>See the &quot;future versions&quot; section 
+for things that aren&#39;t necessarily bugs but I might improve someday.</i></li>
+</ul>
+<h2>Release history</h2>
+<h3>Version 1.1.8</h3>
+<ul>
+	<li><b>With the new auction house in WoW 8.3, this addon no longer has any 
+	purpose on retail, and I recommend uninstalling it.</b>&nbsp; But, it's 
+	still useful on WoW Classic, so I'll leave it available for download.</li>
+	<li>Fixed a bug where Divisor prevented battle pet tooltips from appearing.</li>
+</ul>
+<h3>Version 1.1.7</h3>
+<ul>
+	<li>Gold amounts greater than 999 will now appear with thousandths 
+	separators in locales that use them.&nbsp; (For example, in English, 
+	"12,345".)</li>
+</ul>
+<h3>Version 1.1.6</h3>
+<ul>
+	<li>Fixed a bug where Divisor's tooltip didn't respect the UI Scale setting.</li>
+</ul>
+<h3>Version 1.1.5</h3>
+<ul>
+	<li>Updated for patch 4.3.</li>
+</ul>
+<h3>Version 1.1.4</h3>
+<ul>
+	<li>Updated for Cataclysm.&nbsp; Use &quot;/divisor reset&quot; to get new stack sizes 
+	for Cataclysm enchanting materials if you&#39;ve used Divisor in the past.</li>
+</ul>
+<h3>Version 1.1.3</h3>
+<ul>
+	<li>Fixed a problem that started occurring in a recent patch where after 
+	using the auction house, action bars would sometimes stop working.&nbsp; 
+	(Ouch.)</li>
+</ul>
+<h3>Version 1.1.2</h3>
+<ul>
+	<li>Fixed a bug where crazy-negative values would show up for already-sold 
+	items on the auctions tab.</li>
+	<li>Fixed a bug where the Divisor tooltip wouldn&#39;t disappear if you moved 
+	your mouse off an auction item to the left.</li>
+</ul>
+<h3>Version 1.1.1</h3>
+<ul>
+	<li>Fixed a bug where the last item on the Bid and Auction tabs wouldn&#39;t get 
+	a Divisor tooltip.&nbsp; (Browse only shows 8 items; the other two tabs show 
+	9, but only the top 8 would get a Divisor tooltip.)</li>
+</ul>
+<h3>Version 1.1</h3>
+<ul>
+	<li>Updated for patch 3.0.</li>
+	<li>Now works on all three tabs (Browse, Bid, Auctions).</li>
+	<li>Added various Northrend items (Crystallized Life, Lesser Cosmic Essence, 
+	...) to the list of items that Divisor will automatically show stack prices 
+	for, but to get them, you must use &quot;/divisor reset&quot; and clear out any custom 
+	stacks that you may have set, if any.</li>
+	<li>Divisor now uses icons for gold, silver, and copper instead 
+	of the letters g, s, and c respectively.</li>
+	<li>Divisor now has an entry in Interface Options in case you forget how to 
+	type &quot;/divisor&quot;.</li>
+	<li>Divisor&#39;s tooltip now also appears if you hover over the item&#39;s icon or 
+	the time remaining display.</li>
+	<li>Divisor disables the built-in Blizzard auction UI price per item 
+	feature.</li>
+	<li>Removed the &quot;Divisor is loaded&quot; message that was shown upon logging in.</li>
+</ul>
+<h3>Version 1.0.1</h3>
+<ul>
+	<li>Added more stacked items.</li>
+	<li>Now displays a more readable error message when the embedded mod 
+	VgerCore is missing or failed to load.</li>
+</ul>
+<h3>Version 1.0</h3>
+<ul>
+	<li>Divisor is now at version 1.0!&nbsp; It includes VgerCore 1.0 embedded 
+	in the mod, so you don&#39;t need a separate VgerCore folder in your AddOns 
+	folder.</li>
+</ul>
+<h3>Version 0.2</h3>
+<ul>
+	<li>Added Divisor slash commands, and the ability to set custom stack sizes 
+	for any item you like.</li>
+</ul>
+<h3>Version 0.1.3</h3>
+<ul>
+	<li>More rep items added.</li>
+</ul>
+<h3>Version 0.1.2</h3>
+<ul>
+	<li>More reputation-only items were added, such as Savage Frond, to the list 
+	of items that will show both single prices and stack prices.</li>
+</ul>
+<h3>Version 0.1.1</h3>
+<ul>
+	<li>Divisor now gives you stack prices for a small selection of items, such 
+	as motes and lesser enchanting essences, as well as the single item prices.</li>
+	<li>When you hover over an item that you&#39;re currently winning, Divisor now 
+	shows &quot;Your bid&quot; instead of &quot;Minimum bid&quot; and doesn&#39;t factor in the minimum 
+	increment.</li>
+	<li>The /divisor slash command works now.&nbsp; It doesn&#39;t do anything other 
+	than tell you to read the readme, but someday it will be more useful, and it 
+	won&#39;t give you an error anymore.</li>
+	<li>Divisor will now properly check the version of VgerCore that you have 
+	installed.&nbsp; Currently, 0.4.1 is required.</li>
+</ul>
+<h3>Version 0.1</h3>
+<ul>
+	<li>First release of Divisor.</li>
+</ul>
+<h2>Future versions</h2>
+<ul>
+	<li>I'm considering adding an option to turn off the feature that hides values from the tooltip
+	when they're the same stack size as the item for sale.  For example, when 1 mote of fire is sold,
+	the tooltip only shows the prices for 10 motes of fire, instead of both 1 and 10, which is what you
+	see if you hover over 5 of them.  Some people might find this distracting.&nbsp; 
+	(However, nobody&#39;s really complained yet.)</li>
+</ul>
+<h2>The fine print</h2>
+<p>© 2007-2022 Travis Spomer.&nbsp; This mod is released under the Creative Commons
+<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+Attribution-NonCommercial-NoDerivs 3.0</a> license.&nbsp; In short, this means 
+that you can use it, copy it, and share it, but you can't sell it or distribute 
+your own altered versions without permission.  By using the mod you agree to the terms of the license.  For more information, click the link.</p>
+
+</body></html>

@@ -1,0 +1,12 @@
+## Interface: 11402
+## Title: Divisor
+## Version: 1.1.8
+## Notes: Divisor shows you how much each item in a stack costs at the auction house.
+## SavedVariablesPerCharacter: DivisorOptions
+
+VgerCore\VgerCore.lua
+
+Localization.lua
+Divisor.lua
+DivisorUI.lua
+DivisorUI.xml

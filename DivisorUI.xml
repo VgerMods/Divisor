@@ -1,0 +1,67 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+
+	<!--
+		Divisor by Vger-Azjol-Nerub
+		See Readme.htm for more information.
+		www.vgermods.com
+	-->
+
+	<!-- Standard Divisor large frame tab template -->
+	<Frame name="DivisorUITabPageTemplate" virtual="true" hidden="true">
+		<Anchors><Anchor point="TOPLEFT" /><Anchor point="BOTTOMRIGHT" /></Anchors>
+	</Frame>
+	
+	<!-- Divisor's auction house info tooltip -->
+	<GameTooltip name="DivisorTooltip" parent="UIParent" inherits="GameTooltipTemplate">
+		<Scripts>
+			<OnLoad>self:SetOwner(UIParent, "ANCHOR_NONE")</OnLoad>
+		</Scripts>
+	</GameTooltip>
+	
+	<!-- The Divisor options page in Interface Options -->
+	<Frame name="DivisorUIFrame" inherits="DivisorUITabPageTemplate">
+		<Size><AbsDimension x="385" y="409" /></Size>
+
+		<!-- Art layer -->
+		<Layers>
+			<Layer level="ARTWORK">
+
+				<Texture file="Interface\AddOns\Divisor\Textures\DivisorLogo">
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="10" y="-10" /></Offset></Anchor></Anchors>
+					<Size><AbsDimension x="128" y="64" /></Size>
+				</Texture>
+				
+				<FontString name="DivisorUIFrame_AboutHeaderLabel" inherits="GameFontNormal" justifyH="LEFT" text="DivisorUIFrame_AboutHeaderLabel_Text">
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="150" y="-10" /></Offset></Anchor></Anchors>
+					<Size><AbsDimension x="225" y="20" /></Size>
+				</FontString>
+				<FontString name="DivisorUIFrame_AboutVersionLabel" inherits="GameFontNormal" justifyH="LEFT">
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="150" y="-30" /></Offset></Anchor></Anchors>
+					<Size><AbsDimension x="225" y="20" /></Size>
+					<Color r="0.7" g="0.7" b="0.7" a="1.0" />
+				</FontString>
+				<FontString name="DivisorUIFrame_AboutTranslationLabel" inherits="GameFontNormal" justifyH="LEFT" text="DivisorUIFrame_AboutTranslationLabel_Text">
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="150" y="-50" /></Offset></Anchor></Anchors>
+					<Size><AbsDimension x="225" y="20" /></Size>
+					<Color r="0.7" g="0.7" b="0.7" a="1.0" />
+				</FontString>
+
+				<FontString name="DivisorUIFrame_OptionsHeaderLabel" inherits="GameFontNormalLarge" justifyH="LEFT" text="DivisorUIFrame_OptionsHeaderLabel_Text">
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="15" y="-85" /></Offset></Anchor></Anchors>
+					<Size><AbsDimension x="355" y="20" /></Size>
+				</FontString>
+				<FontString name="DivisorUIFrame_OptionsSubHeaderLabel" inherits="GameFontHighlightSmall" justifyH="LEFT" text="DivisorUIFrame_OptionsSubHeaderLabel_Text">
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="15" y="-105" /></Offset></Anchor></Anchors>
+					<Size><AbsDimension x="355" y="20" /></Size>
+				</FontString>
+
+			</Layer>
+		</Layers>
+
+		<Scripts>
+			<OnLoad function="DivisorUI_OnLoad" />
+		</Scripts>
+		
+	</Frame>
+	
+</Ui>
