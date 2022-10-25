@@ -1,5 +1,5 @@
 name: Package World of Warcraft addon
-# Classic-only version
+# Classic only
 
 on:
   workflow_dispatch:
@@ -9,8 +9,9 @@ on:
         required: true
 
 env:
-  CLASSIC_VERSION: 11402
-  BURNING_CRUSADE_VERSION: 20503
+  CLASSIC_VERSION: 11403
+  BURNING_CRUSADE_VERSION: 20504
+  WRATH_VERSION: 30400
 
 jobs:
   package:
@@ -18,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Get name of addon
       id: init
@@ -28,31 +29,42 @@ jobs:
         tag_name=${addon_name}-${{github.event.inputs.version}}
         echo "::set-output name=addon_name::${addon_name}"
         echo "::set-output name=tag_name::${tag_name}"
+
     - name: Make folder for zips
       run: |
         mkdir -p .releases/${{steps.init.outputs.addon_name}}
         rsync -r --exclude '.*' . .releases/${{steps.init.outputs.addon_name}}
-    - name: Create retail zip
-      run: |
-        cd .releases
-        zip -9 -r ${{steps.init.outputs.tag_name}}.zip ${{steps.init.outputs.addon_name}}
-        cd ..
+
     - name: Replace TOC version for Classic
       run: |
         sed -i 's/Interface: *[0-9]\+/Interface: ${{env.CLASSIC_VERSION}}/g' .releases/${{steps.init.outputs.addon_name}}/${{steps.init.outputs.addon_name}}.toc
+
     - name: Create Classic zip
       run: |
         cd .releases
         zip -9 -r ${{steps.init.outputs.tag_name}}-Classic.zip ${{steps.init.outputs.addon_name}}
         cd ..
+
     - name: Replace TOC version for Burning Crusade
       run: |
         sed -i 's/Interface: *[0-9]\+/Interface: ${{env.BURNING_CRUSADE_VERSION}}/g' .releases/${{steps.init.outputs.addon_name}}/${{steps.init.outputs.addon_name}}.toc
+
     - name: Create Burning Crusade zip
       run: |
         cd .releases
         zip -9 -r ${{steps.init.outputs.tag_name}}-BurningCrusade.zip ${{steps.init.outputs.addon_name}}
         cd ..
+
+    - name: Replace TOC version for Wrath
+      run: |
+        sed -i 's/Interface: *[0-9]\+/Interface: ${{env.WRATH_VERSION}}/g' .releases/${{steps.init.outputs.addon_name}}/${{steps.init.outputs.addon_name}}.toc
+
+    - name: Create Wrath zip
+      run: |
+        cd .releases
+        zip -9 -r ${{steps.init.outputs.tag_name}}-Wrath.zip ${{steps.init.outputs.addon_name}}
+        cd ..
+
     - name: Tag this version
       id: create_release
       uses: actions/create-release@v1
@@ -83,4 +95,14 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: .releases/${{steps.init.outputs.tag_name}}-BurningCrusade.zip
         asset_name: ${{steps.init.outputs.tag_name}}-BurningCrusade.zip
+        asset_content_type: application/zip
+
+    - name: Add Wrath zip to release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: .releases/${{steps.init.outputs.tag_name}}-Wrath.zip
+        asset_name: ${{steps.init.outputs.tag_name}}-Wrath.zip
         asset_content_type: application/zip
